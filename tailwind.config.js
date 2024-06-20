@@ -11,7 +11,11 @@ module.exports = {
           DEFAULT: '#282c34',
           dark: '#2b6cb0',
         }, // Add more custom colors as needed
-      }
+      },
+      fontFamily: {
+        'curly': ['Dancing Script', 'cursive'],
+        'playwrite': ['Playwrite NZ']
+      },
     },
   },
   plugins: [],
