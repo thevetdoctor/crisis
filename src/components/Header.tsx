@@ -6,9 +6,9 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-2xl font-bold">Crisis App</h1>
         <nav>
-          <a href="#hero" className="mr-4">Home</a>
-          <a href="#features" className="mr-4">Features</a>
-          <a href="#contact">Contact</a>
+          <a href="/" className="mr-4">Home</a>
+          <a href="services" className="mr-4">Services</a>
+          <a href="contact">Contact Us</a>
         </nav>
       </div>
     </header>
