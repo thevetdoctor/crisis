@@ -15,6 +15,19 @@ code {
     monospace;
 }
 
+@keyframes zoom-in {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.zoom-in {
+  animation: zoom-in 0.3s ease-out;
+}
+
 /* src/index.css */
 @tailwind base;
 @tailwind components;
