@@ -8,6 +8,13 @@ const urlsToCache = [
   // Add other URLs you want to cache
 ];
 
+// Check for service worker updates and prompt user to refresh
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting(); // Activate new service worker
+  }
+});
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)

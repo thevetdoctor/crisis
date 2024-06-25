@@ -12,6 +12,35 @@ const App: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
   
+  // app.js (or your main application file)
+let refreshing = false;
+
+navigator.serviceWorker.addEventListener('controllerchange', () => {
+  if (!refreshing) {
+    window.location.reload();
+    refreshing = true;
+  }
+});
+
+window.addEventListener('load', () => {
+  navigator.serviceWorker.register('/service-worker.js')
+    .then((registration) => {
+      registration.addEventListener('updatefound', () => {
+        const installingWorker = registration.installing;
+        if (installingWorker) {
+          installingWorker.addEventListener('statechange', () => {
+            if (installingWorker.state === 'installed') {
+              if (navigator.serviceWorker.controller) {
+                console.log('New content is available; please refresh.');
+                navigator.serviceWorker.controller.postMessage({ type: 'SKIP_WAITING' });
+              }
+            }
+          });
+        }
+      });
+    });
+});
+
   useEffect(() => {
     const updateOnlineStatus = () => {
       setOnlineStatus(navigator.onLine);
